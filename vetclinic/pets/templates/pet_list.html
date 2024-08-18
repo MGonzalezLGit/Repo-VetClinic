@@ -1,0 +1,11 @@
+<!-- pets/templates/pets/pet_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Lista de mascotas</h2>
+  <ul>
+    {% for pet in pets %}
+      <li><a href="{% url 'pet_detail' pk=pet.pk %}">{{ pet.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+<!-- pets/templates/pets/owner_form.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Adicionar / Modificar Dueño</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+  </form>
+{% endblock %}

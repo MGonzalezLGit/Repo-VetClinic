@@ -1,0 +1,11 @@
+<!-- pets/templates/pets/owner_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Listado de Dueños</h2>
+  <ul>
+    {% for owner in owners %}
+      <li><a href="{% url 'owner_detail' pk=owner.pk %}">{{ owner.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
