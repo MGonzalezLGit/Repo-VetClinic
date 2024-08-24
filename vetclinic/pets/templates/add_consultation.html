@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Consulta Médica</title>
-</head>
-<body>
-    <h1>Registrar Consulta Médica</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+<center><h1>Veterinaria Patitas</h1></center>
+    <h2>Registrar Consulta Médica</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Registrar</button>
+        <button type="submit">Guardar</button>
     </form>
-</body>
-</html>
+{% endblock %}

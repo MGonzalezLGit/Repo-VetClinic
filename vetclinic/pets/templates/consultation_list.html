@@ -1,0 +1,27 @@
+<!-- pets/templates/pets/consultation_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<center><h1>Veterinaria Patitas</h1></center>
+  <h2>Lista de Consultas</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Mascota</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for consultation in consultations %}
+      <tr>
+        <td><a href="{% url 'consultation_update' pk=consultation.pk %}">{{ consultation.pet.name }}</a></td>
+        <td>{{ consultation.date|date:"Y-m-d" }}</td>
+        <td>{{ consultation.date|time:"H:i" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot><a href="{% url 'consultation_create' %}">Registrar Consulta</a></tfoot>
+  </table>
+{% endblock %}

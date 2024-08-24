@@ -2,10 +2,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<center><h1>Veterinaria Patitas</h1></center>
   <h2>Listado de Dueños</h2>
-  <ul>
-    {% for owner in owners %}
-      <li><a href="{% url 'owner_detail' pk=owner.pk %}">{{ owner.name }}</a></li>
-    {% endfor %}
-  </ul>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Dueño</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for owner in owners %}
+        <tr>
+          <td><a href="{% url 'owner_update' pk=owner.pk %}">{{ owner.name }}</a></td>
+          <td>{{ owner.address }}</td>
+          <td>{{ owner.phone }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot><a href="{% url 'owner_create' %}">Registrar Dueño</a></tfoot>
+  </table>
 {% endblock %}

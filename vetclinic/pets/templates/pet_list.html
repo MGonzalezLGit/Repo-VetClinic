@@ -2,10 +2,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<center><h1>Veterinaria Patitas</h1></center>
   <h2>Lista de mascotas</h2>
-  <ul>
-    {% for pet in pets %}
-      <li><a href="{% url 'pet_detail' pk=pet.pk %}">{{ pet.name }}</a></li>
-    {% endfor %}
-  </ul>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Mascota</th>
+        <th>Dueño</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pet in pets %}
+        <tr>
+          <td><a href="{% url 'pet_update' pk=pet.pk %}">{{ pet.name }}</a></td>
+          <td>{{ pet.owner.name }}</td>
+        </tr>
+      {% endfor %}
+      <tfoot><a href="{% url 'pet_create' %}">Adicionar Mascota</a></tfoot>
+    </table>
 {% endblock %}

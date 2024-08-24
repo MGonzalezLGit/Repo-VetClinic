@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Owner(models.Model):
     identification = models.CharField(max_length=20, unique=True)
@@ -15,7 +16,8 @@ class Pet(models.Model):
     name = models.CharField(max_length=100)
     species = models.CharField(max_length=50)
     breed = models.CharField(max_length=50)
-    age = models.IntegerField()
+    age = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)])
+    photo = models.ImageField(upload_to='pets_photos/', blank=True, null=True)
 
     def __str__(self):
         return self.name
